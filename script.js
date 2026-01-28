@@ -110,29 +110,19 @@ window.addEventListener('scroll', function() {
     });
 });
 
-// Form submissions
+// Form submissions - Mostrar modal
 document.querySelectorAll('form').forEach(form => {
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Animação de sucesso
-        const button = this.querySelector('button[type="submit"]');
-        const originalText = button.textContent;
+        // Mostrar modal do Bootstrap
+        const modal = new bootstrap.Modal(document.getElementById('contactModal'));
+        modal.show();
         
-        button.textContent = 'Enviando...';
-        button.disabled = true;
-        
-        setTimeout(() => {
-            button.textContent = '✓ Enviado!';
-            button.style.background = '#28a745';
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.disabled = false;
-                button.style.background = '';
-                form.reset();
-            }, 2000);
-        }, 1000);
+        // Resetar formulário após fechar modal
+        document.getElementById('contactModal').addEventListener('hidden.bs.modal', function () {
+            form.reset();
+        }, { once: true });
     });
 });
 
@@ -219,6 +209,28 @@ const animateOnScroll = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.step-item, .info-card, .member-card').forEach(el => {
     animateOnScroll.observe(el);
+});
+
+// Hero background slideshow
+function initHeroSlideshow() {
+    const images = document.querySelectorAll('.hero-bg-image');
+    if (images.length === 0) return;
+    
+    let currentIndex = 0;
+    
+    function showNextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+    }
+    
+    // Trocar imagem a cada 5 segundos
+    setInterval(showNextImage, 5000);
+}
+
+// Inicializar slideshow quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    initHeroSlideshow();
 });
 
 // Console message
