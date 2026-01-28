@@ -141,36 +141,6 @@ document.querySelectorAll('.info-card, .member-card, .athlete-card, .result-card
     });
 });
 
-// Animação de texto no hero
-const heroTitle = document.querySelector('.hero-title');
-if (heroTitle) {
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
-    
-    text.split('').forEach((char, index) => {
-        const span = document.createElement('span');
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        span.style.opacity = '0';
-        span.style.animation = `fadeInChar 0.5s ease forwards ${index * 0.05}s`;
-        heroTitle.appendChild(span);
-    });
-}
-
-// Adicionar estilo de animação para caracteres
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeInChar {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);
 
 // Lazy loading para imagens (se houver)
 if ('IntersectionObserver' in window) {
