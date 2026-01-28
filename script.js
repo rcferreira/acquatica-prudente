@@ -10,10 +10,18 @@ AOS.init({
 // Header scroll effect
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
+    const navbar = document.querySelector('.navbar');
+    
     if (window.scrollY > 100) {
         header.classList.add('scrolled');
+        if (navbar) {
+            navbar.classList.add('scrolled');
+        }
     } else {
         header.classList.remove('scrolled');
+        if (navbar) {
+            navbar.classList.remove('scrolled');
+        }
     }
 });
 
