@@ -287,16 +287,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-size: 45px;
     font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    background: linear-gradient(135deg, #ffffff 0%, var(--primary-red) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradient-shift 3s ease infinite;
-    text-shadow: 0 0 30px rgba(198, 21, 17, 0.5);
+    letter-spacing: 1px;
 }
 
 @keyframes gradient-shift {
